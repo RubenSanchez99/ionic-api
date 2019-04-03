@@ -1,0 +1,12 @@
+/home/ruben/projects/epsilon/i/capacitacion-microservicios/src/Services/Identity/Identity.API/bin/Debug/netcoreapp2.0/Identity.API.deps.json
+/home/ruben/projects/epsilon/i/capacitacion-microservicios/src/Services/Identity/Identity.API/bin/Debug/netcoreapp2.0/Identity.API.runtimeconfig.json
+/home/ruben/projects/epsilon/i/capacitacion-microservicios/src/Services/Identity/Identity.API/bin/Debug/netcoreapp2.0/Identity.API.runtimeconfig.dev.json
+/home/ruben/projects/epsilon/i/capacitacion-microservicios/src/Services/Identity/Identity.API/bin/Debug/netcoreapp2.0/Identity.API.dll
+/home/ruben/projects/epsilon/i/capacitacion-microservicios/src/Services/Identity/Identity.API/bin/Debug/netcoreapp2.0/Identity.API.pdb
+/home/ruben/projects/epsilon/i/capacitacion-microservicios/src/Services/Identity/Identity.API/obj/Debug/netcoreapp2.0/Identity.API.csprojAssemblyReference.cache
+/home/ruben/projects/epsilon/i/capacitacion-microservicios/src/Services/Identity/Identity.API/obj/Debug/netcoreapp2.0/Identity.API.csproj.CoreCompileInputs.cache
+/home/ruben/projects/epsilon/i/capacitacion-microservicios/src/Services/Identity/Identity.API/obj/Debug/netcoreapp2.0/UserSecretsAssemblyInfo.cs
+/home/ruben/projects/epsilon/i/capacitacion-microservicios/src/Services/Identity/Identity.API/obj/Debug/netcoreapp2.0/Identity.API.AssemblyInfoInputs.cache
+/home/ruben/projects/epsilon/i/capacitacion-microservicios/src/Services/Identity/Identity.API/obj/Debug/netcoreapp2.0/Identity.API.AssemblyInfo.cs
+/home/ruben/projects/epsilon/i/capacitacion-microservicios/src/Services/Identity/Identity.API/obj/Debug/netcoreapp2.0/Identity.API.dll
+/home/ruben/projects/epsilon/i/capacitacion-microservicios/src/Services/Identity/Identity.API/obj/Debug/netcoreapp2.0/Identity.API.pdb

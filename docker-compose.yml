@@ -1,0 +1,16 @@
+version: '3.7'
+
+services:
+
+  identity:
+    image: eshop/identity.api:${TAG:-latest}
+    build:
+      context: ./src/Services/Identity/Identity.API
+      dockerfile: Dockerfile     
+
+  catalog:
+    image: cdis-capacitacion/catalog.api
+    build:
+      context: ./src/Services/Catalog/Catalog.API
+      dockerfile: Dockerfile 
+    restart: on-failure   

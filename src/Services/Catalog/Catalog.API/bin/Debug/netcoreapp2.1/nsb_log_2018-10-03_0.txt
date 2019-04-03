@@ -1,0 +1,1 @@
+﻿2018-10-03 10:58:19.343 INFO  DefaultFactory Logging to '/home/ruben/projects/epsilon/i/capacitacion-microservicios/src/Services/Catalog/Catalog.API/bin/Debug/netcoreapp2.1/' with level Info

@@ -5,6 +5,6 @@ namespace Catalog.API.Services.ImageWriter
 {
     public interface IImageWriter
     {
-        Task<string> UploadImage(IFormFile file);
+        Task<string> UploadImage(IFormFile file, string catalogItemId);
     }
 }

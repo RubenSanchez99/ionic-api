@@ -12,6 +12,9 @@ using System.Threading.Tasks;
 // Para el evento
 using eShopOnContainers.Services.IntegrationEvents.Events;
 using MassTransit;
+using Microsoft.AspNetCore.Http;
+using Catalog.API.Services.ImageWriter;
+using Newtonsoft.Json;
 
 namespace Catalog.API.Controllers
 {
@@ -20,12 +23,14 @@ namespace Catalog.API.Controllers
     {
         private readonly CatalogContext _catalogContext;
         private readonly CatalogSettings _settings;
+        private readonly IImageHandler _imageHandler;
 
-        public CatalogController(CatalogContext context, IOptionsSnapshot<CatalogSettings> settings)
+        public CatalogController(CatalogContext context, IOptionsSnapshot<CatalogSettings> settings, IImageHandler imageHandler)
         {
             _catalogContext = context ?? throw new ArgumentNullException(nameof(context));
             _settings = settings.Value;
             ((DbContext)context).ChangeTracker.QueryTrackingBehavior = QueryTrackingBehavior.NoTracking;
+            _imageHandler = imageHandler;
         }
 
         // GET api/v1/[controller]/items[?pageSize=3&pageIndex=10]
@@ -201,7 +206,7 @@ namespace Catalog.API.Controllers
         //POST api/v1/[controller]/items
         [Route("items")]
         [HttpPost]
-        public async Task<IActionResult> CreateProduct([FromBody]NewItem product)
+        public async Task<IActionResult> CreateProduct(NewItem data)
         {
             if (!ModelState.IsValid)
             {
@@ -210,16 +215,22 @@ namespace Catalog.API.Controllers
 
             var item = new CatalogItem
             {
-                CatalogBrandId = product.CatalogBrandId,
-                CatalogTypeId = product.CatalogTypeId,
-                Description = product.Description,
-                Name = product.Name,
-                PictureFileName = product.PictureFileName,
-                Price = product.Price
+                CatalogBrandId = data.CatalogBrandId,
+                CatalogTypeId = data.CatalogTypeId,
+                Description = data.Description,
+                Name = data.Name,
+                PictureFileName = data.PictureFileName,
+                Price = data.Price
             };
+
             _catalogContext.CatalogItems.Add(item);
 
             await _catalogContext.SaveChangesAsync();
+
+            if (data.file != null) 
+            {
+                await _imageHandler.UploadImage(data.file, item.PictureFileName);
+            }
 
             return CreatedAtAction(nameof(GetItemById), new { id = item.Id }, null);
         }

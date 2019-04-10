@@ -1,7 +1,10 @@
+using Microsoft.AspNetCore.Http;
+
 namespace Catalog.API.ViewModel
 {
     public class NewItem
     {
+        public IFormFile file { get; set; }
         public string Name { get; set; }
 
         public string Description { get; set; }

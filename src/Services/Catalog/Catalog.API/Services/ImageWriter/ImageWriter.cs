@@ -9,11 +9,11 @@ namespace Catalog.API.Services.ImageWriter
 {
     public class ImageWriter : IImageWriter
     {
-        public async Task<string> UploadImage(IFormFile file)
+        public async Task<string> UploadImage(IFormFile file, string pictureFileName)
         {
             if (CheckIfImageFile(file))
             {
-                return await WriteFile(file);
+                return await WriteFile(file, pictureFileName);
             }
 
             return "Invalid image file";
@@ -41,15 +41,15 @@ namespace Catalog.API.Services.ImageWriter
         /// </summary>
         /// <param name="file"></param>
         /// <returns></returns>
-        public async Task<string> WriteFile(IFormFile file)
+        public async Task<string> WriteFile(IFormFile file, string pictureFileName)
         {
             string fileName;
             try
             {
-                var extension = "." + file.FileName.Split('.')[file.FileName.Split('.').Length - 1];
-                fileName = Guid.NewGuid().ToString() + extension; //Create a new Name 
+                //var extension = "." + file.FileName.Split('.')[file.FileName.Split('.').Length - 1];
+                fileName = pictureFileName; //Create a new Name 
                                                               //for the file due to security reasons.
-                var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot\\Pics", fileName);
+                var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/Pics", fileName);
 
                 using (var bits = new FileStream(path, FileMode.Create))
                 {

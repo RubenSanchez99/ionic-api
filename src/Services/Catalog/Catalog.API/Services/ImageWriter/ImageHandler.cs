@@ -6,7 +6,7 @@ namespace Catalog.API.Services.ImageWriter
 {
     public interface IImageHandler
     {
-        Task<IActionResult> UploadImage(IFormFile file);
+        Task<IActionResult> UploadImage(IFormFile file, string pictureFileName);
     }
 
     public class ImageHandler : IImageHandler
@@ -17,9 +17,10 @@ namespace Catalog.API.Services.ImageWriter
             _imageWriter = imageWriter;
         }
 
-        public async Task<IActionResult> UploadImage(IFormFile file)
+        public async Task<IActionResult> UploadImage(IFormFile file, string pictureFileName)
         {
-            var result = await _imageWriter.UploadImage(file);
+            var result = await _imageWriter.UploadImage(file, pictureFileName);
+            System.Console.WriteLine("Writing " + file.Name);
             return new ObjectResult(result);
         }
     }
